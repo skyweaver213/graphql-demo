@@ -11,6 +11,10 @@ npm start
 
 > 初始化 mongodb数据 <br/>
 > 访问 [http://localhost:3000/initDB](http://localhost:3000/initDB)  会初始化3个Collection<br/>
+
+![avatar](http://thyrsi.com/t6/672/1550504319x2890149584.png)
+
+
 > 访问 demo  <br/>
 > [http://localhost:3000](http://localhost:3000)
 
