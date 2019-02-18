@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/demo.css">
+</head>
+
+<body>
+
+
+
+    <div class="fetchContain">
+        <span>请选择</span>
+        <select class="selectList">
+            <option value="proLanguage">proLanguage</option>
+            <option value="framework">framework</option>
+            <option value="tool">tool</option>
+            <option value="proLanguage,framework">proLanguage + framework</option>
+            <option value="proLanguage,tool">proLanguage + tool</option>
+            <option value="proLanguage,framework,tool">proLanguage + framework + tool</option>
+        </select>
+
+        <button class="getData_btn">获取数据</button>
+    </div>
+
+    <ul id="dataList">
+        <li class='stitle'>
+            <div>请获取数据</div>
+        </li>
+    </ul>
+
+
+    <script src="https://zeptojs.com/zepto.min.js"></script>
+
+    <script>
+        $(function () {
+            var $getData_btn = $('.getData_btn')
+
+            $getData_btn.click(function () {
+
+                var $selectList = $('.selectList')
+                var selected = $selectList.val()
+
+                var select_arr = selected.split(',')
+                var sel_len = select_arr.length
+                var queryUrl = sel_len > 1 ? 'graphql' : select_arr[0] + 'Fetch'
+
+                var request = {}
+
+                var map = {
+                    proLanguage: `proLanguage{
+                        _id
+                        name
+                        desc
+                    }`,
+                    framework: `framework{
+                        _id
+                        name
+                        desc
+                    }`,
+                    tool: `tool{
+                        _id
+                        name
+                        desc
+                    }`
+                }
+
+                if (sel_len > 1) {
+                    var temp_str = ''
+                    for (var s = 0; s < select_arr.length; s++) {
+
+                        temp_str += map[select_arr[s]]
+                    }
+                    request = {
+                        query: `query { ${temp_str} }`
+                    }
+                }
+
+                $.ajax({
+                    url: `/${queryUrl}`,
+                    // type: sel_len > 1 ? 'post' : 'get',
+                    data: request,
+                    success: function (res) {
+                        renderList(res.data, selected)
+                    }
+                })
+
+            })
+
+            // 渲染界面
+            function renderList(res, selected) {
+                var resList = res || []
+                var htmlStr = ''
+                var $dataList = $('#dataList') || []
+
+                // 是 graphql数据
+                if (!resList.length) {
+                    for (key in resList) {
+                        var res_item = resList[key]
+
+                        htmlStr += `<li class='stitle'><div>${key}</div></li>`
+
+                        for (var i = 0; i < res_item.length; i++) {
+                            var item = res_item[i]
+                            htmlStr +=
+                                `<li class='item'><div class='name'>${item.name}</div><div class='desc'>${item.desc}</div></li>`
+                        }
+                    }
+                } else {
+                    htmlStr += `<li class='stitle'><div>${selected}</div></li>`
+                    for (var i = 0; i < resList.length; i++) {
+                        var item = resList[i]
+                        htmlStr +=
+                            `<li class='item'><div class='name'>${item.name}</div><div class='desc'>${item.desc}</div></li>`
+                    }
+                }
+
+                $dataList[0].innerHTML = htmlStr
+
+            }
+
+        })
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,12 @@
+logs/
+node_modules/
+.next/
+release/
+build/
+.vscode/
+# nfes 这边有坑，先不暂存 package-lock.json
+package-lock.json
+.history
+.idea
+.DS_Store
+coverage/
