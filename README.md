@@ -14,3 +14,10 @@ npm start
 > 访问 demo  <br/>
 > [http://localhost:3000](http://localhost:3000)
 
+![avatar](http://thyrsi.com/t6/672/1550503243x2728278668.png)
+
+### graphql 请求快速测试
+> 访问[http://localhost:3000/graphiql](http://localhost:3000/graphiql) , 如下图 输入 { proLanguage framework }
+
+![avatar](http://thyrsi.com/t6/672/1550503512x2728278668.png)
+
