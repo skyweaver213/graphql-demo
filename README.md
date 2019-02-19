@@ -1,10 +1,10 @@
 Graphql Demo
 -------------
 
-Used koa + graphql + mongodb
+Use koa + graphql + mongodb
 > 首先本地安装mongodb，如果对mongodb不熟悉的同学，可以brew安装mongodb后，再安装mongodb-express可视化管理。
 
-How To Use
+Quick Start
 --------------
 
 ```js
