@@ -31,3 +31,6 @@ Graphql Request Test
 
 ![avatar](http://thyrsi.com/t6/672/1550503512x2728278668.png)
 
+Variables
+------------------
+
