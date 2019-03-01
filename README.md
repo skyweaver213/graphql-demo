@@ -4,6 +4,19 @@ Graphql Demo
 Use koa + graphql + mongodb
 > 首先本地安装mongodb，如果对mongodb不熟悉的同学，可以brew安装mongodb后，再安装mongodb-express可视化管理。
 
+Install Mongodb
+---------------
+
+### 方式一
+```js
+sudo chown -R {$whoami} /usr/local   // {$whoami} 为用户名文件夹名字
+brew install mongodb    // 安装mongodb
+./mongod --dbpath=/data/db   // 指定数据库路径启动
+
+```
+### 方式二 下载安装包
+http://www.runoob.com/mongodb/mongodb-linux-install.html
+
 Quick Start
 --------------
 
@@ -33,4 +46,5 @@ Graphql Request Test
 
 Variables
 ------------------
+
 
