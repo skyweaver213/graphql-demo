@@ -19,6 +19,12 @@ let proLanguageType = new GraphQLObjectType({
         },
         desc: {
             type: GraphQLString
+        },
+        uid: {
+            type: GraphQLString
+        },
+        key: {
+            type: GraphQLString
         }
     }
 })
@@ -26,10 +32,33 @@ let proLanguageType = new GraphQLObjectType({
 
 const proLanguage = {
     type: new GraphQLList(proLanguageType),
-    args: {},
-    resolve(root, params, options) {
+    args: {
+        uid: {
+            type : GraphQLString,
+            description: 'The id of the proLanguage'
+        },
+        key: {
+            type: GraphQLString
+        }
+    },
+    async resolve (root, args, options)  {
+        console.log('root ---------: ', root , ' args: ', args,  ' options: ', options)
         let proLanguageList = proLanguage_M.find({})
-        return proLanguageList.exec()
+        let res = await proLanguageList.exec() || []
+   
+        // Test args uid and key
+        let temp_res = res.map((item ) => {
+            let temp_item = item
+            if (args.uid) {
+                temp_item['uid'] = args.uid
+            } 
+            if (args.key) {
+                temp_item['key'] = args.key
+            }
+            return temp_item
+        })
+
+        return temp_res
     }
 }
 

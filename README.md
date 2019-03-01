@@ -11,11 +11,12 @@ Install Mongodb
 ```js
 sudo chown -R {$whoami} /usr/local   // {$whoami} 为用户名文件夹名字
 brew install mongodb    // 安装mongodb
+mkdir -p /data/db       // 首次创建数据库文件夹，可能需要root权限
 ./mongod --dbpath=/data/db   // 指定数据库路径启动
 
 ```
 ### 方式二 下载安装包
-http://www.runoob.com/mongodb/mongodb-linux-install.html
+[http://www.runoob.com/mongodb/mongodb-linux-install.html](http://www.runoob.com/mongodb/mongodb-linux-install.html)
 
 Quick Start
 --------------
@@ -46,5 +47,27 @@ Graphql Request Test
 
 Variables
 ------------------
+```js
+### params
+query db($uid: String){
+  proLanguage(uid: $uid, key: "jav") {
+    _id
+    name
+    desc
+    uid
+    key
+  }
+  framework {
+    _id
+    name
+    desc
+  }
+}
+
+
+QUERY VARIABLES
+{"uid": "1234"}
+```
+![avatar](http://thyrsi.com/t6/675/1551430765x2890191841.png)
 
 
