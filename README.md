@@ -30,20 +30,33 @@ npm start
 > 初始化 mongodb数据 <br/>
 > 访问 [http://localhost:3000/initDB](http://localhost:3000/initDB)  会初始化3个Collection<br/>
 
-![avatar](http://thyrsi.com/t6/672/1550504319x2890149584.png)
+![avatar](./static/demo0.png)
 
 
 > 访问 demo  <br/>
 > [http://localhost:3000](http://localhost:3000)
 
-![avatar](http://thyrsi.com/t6/672/1550503243x2728278668.png)
+![avatar](./static/demo1.png)
 
 Graphql Request Test
 --------------
 
-> 访问[http://localhost:3000/graphiql](http://localhost:3000/graphiql) , 如下图 输入 { proLanguage framework }
+> 访问[http://localhost:3000/graphiql](http://localhost:3000/graphiql) , 如下图 <br/>
+输入:
 
-![avatar](http://thyrsi.com/t6/672/1550503512x2728278668.png)
+```js
+{ proLanguage {
+  name
+  desc
+  uid
+  key
+} framework {
+  name
+  desc
+} }
+```
+
+![avatar](./static/demo4.png)
 
 Variables
 ------------------
@@ -68,6 +81,6 @@ query db($uid: String){
 QUERY VARIABLES
 {"uid": "1234"}
 ```
-![avatar](http://thyrsi.com/t6/675/1551430765x2890191841.png)
+![avatar](./static/demo3.png)
 
 
